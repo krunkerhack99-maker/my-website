@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">صفحتي الشخصية الفخمة</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    /* ===== خلفية متدرجة + نجوم متحركة ===== */
+    body {
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 50px;
+        min-height: 100vh;
+        overflow: hidden;
+        background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+        background-size: 400% 400%;
+        animation: gradientBG 20s ease infinite;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .star {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: moveStar linear infinite;
+    }
+
+    @keyframes moveStar {
+        0% { transform: translateY(0) translateX(0); opacity: 0.8; }
+        100% { transform: translateY(-1000px) translateX(100px); opacity: 0; }
+    }
+
+    /* ===== Fade-in ===== */
+    h1, p, .links, #musicBtn {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+    }
+    h1 { animation-delay: 0.2s; }
+    p { animation-delay: 0.6s; }
+    .links { animation-delay: 1s; }
+    #musicBtn { animation-delay: 1.4s; }
+
+    @keyframes fadeIn {
+        to { opacity: 1; }
+    }
+
+    /* ===== النصوص ===== */
+    h1 {
+        color: #fff;
+        margin-bottom: 10px;
+        font-size: 3em;
+        text-shadow: 3px 3px 15px rgba(0,0,0,0.5);
+    }
+
+    p {
+        color: #f0f0f0;
+        font-size: 20px;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+
+    /* ===== الأزرار ===== */
+    .links {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        z-index: 2;
+        position: relative;
+    }
+
+    .link-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 30px;
+        width: 260px;
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        transition: all 0.3s;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    .link-btn i {
+        margin-right: 10px;
+        font-size: 22px;
+        background: linear-gradient(45deg, #ffeb3b, #ff3d00, #00fff7, #ff3dff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: neonIcon 5s linear infinite;
+        transition: transform 0.3s;
+    }
+
+    @keyframes neonIcon {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .link-btn:hover {
+        background: rgba(255, 255, 255, 0.4);
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+
+    .link-btn:hover i {
+        transform: rotate(20deg) scale(1.2);
+    }
+
+    #musicBtn {
+        margin-top: 30px;
+        padding: 12px 25px;
+        font-size: 18px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        background: rgba(255,255,255,0.2);
+        color: white;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        z-index: 2;
+        position: relative;
+    }
+
+    #musicBtn:hover {
+        background: rgba(255,255,255,0.4);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+
+    @media (max-width: 500px){
+        h1 { font-size: 2.2em; }
+        p { font-size: 18px; }
+        .link-btn { width: 200px; font-size: 16px; }
+    }
+</style>
+</head>
+<body>
+
+<script>
+    // ===== تغيير اسم الموقع بسهولة =====
+    const myName = "Game Zone"; // ضع اسمك هنا وسيظهر في العنوان والصفحة
+    document.title = myName; 
+</script>
+
+<!-- النجوم -->
+<div id="stars"></div>
+
+<h1 id="welcomeText">مرحباً! 🌟</h1>
+<p id="followText">يمكنك متابعتي على هذه المنصات:</p>
+
+<div class="links">
+    <a href="https://www.youtube.com/الرابط_الصحيح_لقناتك" class="link-btn" target="_blank">
+        <i class="fab fa-youtube"></i> YouTube
+    </a>
+    <a href="https://www.facebook.com/اسم_صفحتك" class="link-btn" target="_blank">
+        <i class="fab fa-facebook-f"></i> Facebook
+    </a>
+    <a href="https://discord.gg/رابط_السيرفر" class="link-btn" target="_blank">
+        <i class="fab fa-discord"></i> Discord
+    </a>
+</div>
+
+<button id="musicBtn">تشغيل / إيقاف الموسيقى 🎵</button>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+    متصفحك لا يدعم تشغيل الصوت.
+</audio>
+
+<script>
+    // ===== موسيقى =====
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+
+    musicBtn.addEventListener('click', () => {
+        if(music.paused){
+            music.play();
+            musicBtn.textContent = "إيقاف الموسيقى 🔇";
+        } else {
+            music.pause();
+            musicBtn.textContent = "تشغيل الموسيقى 🎵";
+        }
+    });
+
+    // ===== إنشاء النجوم =====
+    const starsContainer = document.getElementById('stars');
+    const numberOfStars = 100;
+
+    for(let i=0; i<numberOfStars; i++){
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.left = Math.random() * window.innerWidth + 'px';
+        star.style.top = Math.random() * window.innerHeight + 'px';
+        star.style.width = Math.random()*3 + 2 + 'px';
+        star.style.height = star.style.width;
+        star.style.animationDuration = 5 + Math.random()*10 + 's';
+        star.style.opacity = Math.random();
+        document.body.appendChild(star);
+    }
+
+    // ===== وضع الاسم في الصفحة =====
+    document.getElementById('welcomeText').textContent = `مرحباً! أنا ${myName} 🌟`;
+</script>
+
+</body>
+</html>
